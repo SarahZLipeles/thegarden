@@ -4,6 +4,8 @@
   "description": "terraforming management simulator",
   "main": "index.js",
   "scripts": {
+    "setup": "npm install",
+    "build": "tsc",
     "test": "nyc mocha --require ts-node/register test/**/*.ts"
   },
   "repository": {
