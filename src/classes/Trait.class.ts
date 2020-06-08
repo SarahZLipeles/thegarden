@@ -1,9 +1,9 @@
 /**
  * An organism trait
  */
-export class Traits {
+export class Trait {
     name: string;
-    effects: Map<Traits, number>;
+    effects: Map<Trait, number>;
 
     constructor(name:string) {
         this.name = name;
