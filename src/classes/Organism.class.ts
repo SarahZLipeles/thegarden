@@ -24,7 +24,11 @@ export class Organism {
     }
 
     getGrowthFunction(populations: Populations, factors: Factors):OrganismFunction {
-        throw new Error("Method not implemented.");
+        return (pop:Populations) => 0;
+    }
+
+    equals(other: Organism): any {
+        return this.dna === other.dna
     }
 
 }

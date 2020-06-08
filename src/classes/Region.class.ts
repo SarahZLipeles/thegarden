@@ -16,7 +16,7 @@ export class Region {
      */
     step: () => void;
 
-    constructor(factors:Factors, universe:Universe) {
+    constructor(factors: Factors, universe: Universe) {
         this.factors = new Map(factors);
         this.populations = new Map<string, number>();
         this.universe = universe;
@@ -60,37 +60,37 @@ export class Region {
                 this.makeStepFunc();
             }
         });
-}
-
-/**
- * generates new step function
- * @modifies step
- */
-makeStepFunc() {
-    const organismFunctions: Map<string, OrganismFunction> = new Map();
-    // generate population change function for each organism
-    this.populations.forEach((population, dna) => {
-        const organism = new Organism(dna);
-        const deltaFunc = organism.getGrowthFunction(this.populations, this.factors);
-        organismFunctions.set(dna, deltaFunc);
-    });
-
-    this.step = () => {
-        const newPopulations:Populations = new Map();
-
-        // calculate abiotic changes
-        let newFactors = this.universe.updateFactors(this.factors);
-
-        // generate new mutations
-        this.calcMutations();
-        // update populations
-        organismFunctions.forEach((deltaFunc, dna) => {
-            const val = deltaFunc(this.populations);
-            newPopulations.set(dna, val)
-        });
-        // update abiotic factors
-        this.factors = newFactors;
     }
-}
+
+    /**
+     * generates new step function
+     * @modifies step
+     */
+    makeStepFunc() {
+        const organismFunctions: Map<string, OrganismFunction> = new Map();
+        // generate population change function for each organism
+        this.populations.forEach((population, dna) => {
+            const organism = new Organism(dna);
+            const deltaFunc = organism.getGrowthFunction(this.populations, this.factors);
+            organismFunctions.set(dna, deltaFunc);
+        });
+
+        this.step = () => {
+            const newPopulations: Populations = new Map();
+
+            // calculate abiotic changes
+            let newFactors = this.universe.updateFactors(this.factors);
+
+            // generate new mutations
+            this.calcMutations();
+            // update populations
+            organismFunctions.forEach((deltaFunc, dna) => {
+                const val = deltaFunc(this.populations);
+                newPopulations.set(dna, val)
+            });
+            // update abiotic factors
+            this.factors = newFactors;
+        }
+    }
 };
 

@@ -1,0 +1,28 @@
+{
+  "name": "thegarden",
+  "version": "0.0.0",
+  "description": "terraforming management simulator",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --require ts-node/register test/**/*.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheoLipeles/thegarden.git"
+  },
+  "keywords": [],
+  "author": "Theo Lipeles",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TheoLipeles/thegarden/issues"
+  },
+  "homepage": "https://github.com/TheoLipeles/thegarden#readme",
+  "devDependencies": {
+    "@types/chai": "^4.2.11",
+    "@types/mocha": "^7.0.2",
+    "chai": "^4.2.0",
+    "mocha": "^7.2.0",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.5"
+  }
+}
