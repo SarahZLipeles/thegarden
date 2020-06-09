@@ -4,7 +4,6 @@
   "description": "terraforming management simulator",
   "main": "index.js",
   "scripts": {
-    "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
     "test": "nyc mocha --require ts-node/register test/**/*.ts"
   },
   "repository": {
