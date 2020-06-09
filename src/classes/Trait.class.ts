@@ -1,3 +1,6 @@
+import { Effect } from "./helpers";
+
+
 /**
  * An organism trait
  * @param name trait name
@@ -7,15 +10,15 @@
 export class Trait {
     name: string;
     sequence:string;
-    traitEffects: Map<Trait, number>;
-    factorEffects: Map<string, number>;
+    traitEffects: Map<Trait, Effect>;
+    factorEffects: Map<string, Effect>;
     children: Set<Trait>;
 
     constructor(name:string, sequence:string) {
         this.name = name;
         this.sequence = sequence;
-        this.traitEffects = new Map<Trait, number>();
-        this.factorEffects = new Map<string, number>();
+        this.traitEffects = new Map<Trait, Effect>();
+        this.factorEffects = new Map<string, Effect>();
         this.children = new Set<Trait>();
     }
 }
