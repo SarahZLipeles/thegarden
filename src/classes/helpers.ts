@@ -21,4 +21,4 @@ export type Factors = Map<string, number>;
  */
 export type Effect = (quantity: number) => number;
 
-export type OrganismFunction = (populations: Populations) => number;
+export type OrganismFunction = (populations: Populations, factors: Factors) => number;

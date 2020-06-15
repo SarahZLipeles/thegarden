@@ -23,8 +23,8 @@ export class Organism {
         return new Map<string, number>(); 
     }
 
-    getGrowthFunction(populations: Populations, factors: Factors):OrganismFunction {
-        return (pop:Populations) => 0;
+    getGrowthFunction(populations: Populations):OrganismFunction {
+        return (pop:Populations, factors:Factors) => 0;
     }
 
     equals(other: Organism): any {

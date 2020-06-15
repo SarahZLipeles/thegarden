@@ -71,7 +71,7 @@ export class Region {
         // generate population change function for each organism
         this.populations.forEach((population, dna) => {
             const organism = new Organism(dna);
-            const deltaFunc = organism.getGrowthFunction(this.populations, this.factors);
+            const deltaFunc = organism.getGrowthFunction(this.populations);
             organismFunctions.set(dna, deltaFunc);
         });
 
@@ -85,7 +85,7 @@ export class Region {
             this.calcMutations();
             // update populations
             organismFunctions.forEach((deltaFunc, dna) => {
-                const val = deltaFunc(this.populations);
+                const val = deltaFunc(this.populations, this.factors);
                 newPopulations.set(dna, val)
             });
             // update abiotic factors
