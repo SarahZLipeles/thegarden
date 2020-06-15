@@ -6,13 +6,23 @@ import { Populations, OrganismFunction, Factors } from "./helpers";
 export class Organism {
 
     dna:string;
+    maxVariants:number;
+    maxDnaLength:number;
 
     /**
      * 
      * @param dna a unique dna sequence defining the organism
      */
-    constructor(dna:string) {
+    constructor(dna:string, maxVariants=1, maxDnaLength=1000) {
         this.dna = dna;
+        if (maxVariants < 1 || maxVariants % 1 !== 0) {
+            throw new Error('maxVariants must be a positive integer');
+        }
+        this.maxVariants = maxVariants;
+        if (maxDnaLength < dna.length || maxDnaLength % 1 !== 0) {
+            throw new Error('maxDnaLength must be an integer larger than the length of this.dna');
+        }
+        this.maxDnaLength = maxDnaLength;
     }
 
     /**
