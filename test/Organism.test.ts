@@ -58,10 +58,10 @@ describe('Organism', () => {
 
     describe('getGrowthFunction', () => {
         it('returns a function', () => {
-            expect(typeof testOrganism.getGrowthFunction(new Map(), new Map())).to.equal('function');
+            expect(typeof testOrganism.getGrowthFunction(new Map())).to.equal('function');
         });
         it('returns a function that returns an integer', () => {
-            expect(testOrganism.getGrowthFunction(new Map(), new Map())(new Map())%1).to.equal(0);
+            expect(testOrganism.getGrowthFunction(new Map())(new Map(), new Map())%1).to.equal(0);
         });
     })
 });
