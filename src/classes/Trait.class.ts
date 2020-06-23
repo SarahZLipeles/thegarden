@@ -6,6 +6,7 @@ import { Effect } from "./helpers";
  * @param name trait name
  * @param traitEffects effects on another trait by name
  * @param factorEffects incoming effects from abiotic factors by factor name
+ * @param mutationChance chance of trait mutating from it's parent trait
  */
 export class Trait {
     name: string;
