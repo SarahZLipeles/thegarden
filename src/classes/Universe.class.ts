@@ -7,7 +7,7 @@ import { Trait } from "./Trait.class";
 export class Universe {
     epoch: number;
     traits: Set<Trait>;
-    factors: Set<string>;
+    factors: Factors;
 
     /**
      * create a new Universe with given traits and factors
@@ -17,7 +17,7 @@ export class Universe {
      * @require traits are unique by "sequence:name"
      * @require factors are unique by name
      */
-    constructor(traits: Set<Trait>, factors: Set<string>) {
+    constructor(traits: Set<Trait>, factors: Factors) {
         this.epoch = 0;
         this.verifyInit(traits, factors);
         this.traits = traits;
@@ -33,7 +33,27 @@ export class Universe {
         return factors;
     }
 
-    private verifyInit(traits: Set<Trait>, factors: Set<string>) {
+    /**
+     * add new factors to the universe
+     * @param factors a map of factors to add
+     */
+    addFactors(factors:Factors) {
+        factors.forEach((quantity, factor) => {
+            this.factors.set(factor, quantity);
+        });
+    }
+
+    /**
+     * add new traits to the universe
+     * @param traits a set of traits to add
+     */
+    addTraits(traits: Set<Trait>) {
+        traits.forEach((trait) => {
+            this.traits.add(trait);
+        });
+    }
+
+    private verifyInit(traits: Set<Trait>, factors: Factors) {
         traits.forEach((trait) => {
             // verify factor effects
             trait.factorEffects.forEach((effect, factor) => {
@@ -46,13 +66,13 @@ export class Universe {
                 if (!traits.has(targetTrait)) {
                     throw new Error(`Invalid traitEffect: trait "${trait.name}" references target trait "${targetTrait.name}", but "${targetTrait.name}" does not exist`);
                 }
-            })
+            });
             // verify trait children
             trait.children.forEach((childTrait) => {
                 if (!traits.has(childTrait)) {
                     throw new Error(`Invalid child trait: trait "${trait.name}" references child trait "${childTrait.name}", but "${childTrait.name}" does not exist`);
                 }
-            })
+            });
             
         });
     }
