@@ -2,7 +2,7 @@ import { Region, Universe } from '../src/index';
 import { expect } from 'chai';
 
 describe('Region', () => {
-    const testRegion = new Region(new Map(), new Universe(new Set(), new Set()));
+    const testRegion = new Region(new Map(), new Universe(new Set(), new Map()));
     it('has abiotic factors', () => {
         expect(testRegion.factors).to.exist;
     });
@@ -13,7 +13,7 @@ describe('Region', () => {
         expect(testRegion.universe).to.exist;
     });
     describe('makeStepFunc', () => {
-        const testRegion = new Region(new Map(), new Universe(new Set(), new Set()));
+        const testRegion = new Region(new Map(), new Universe(new Set(), new Map()));
         it('initializes the step function', () => {
             expect(testRegion.step).to.not.exist;
             testRegion.makeStepFunc();
